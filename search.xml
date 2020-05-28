@@ -11,39 +11,71 @@
   <entry>
     <title>Github Pages + hexo Next 搭建个人博客</title>
     <url>/2020/05/27/Github-Page-hexo-Next-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h5 id="一、Github-Pages-和-hexo是什么"><a href="#一、Github-Pages-和-hexo是什么" class="headerlink" title="一、Github Pages 和 hexo是什么"></a>一、Github Pages 和 hexo是什么</h5><h5 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤"></a>二、步骤</h5><ol>
-<li><p>配置好一个Github Pages仓库</p>
-<p>新建一个Github项目,命名规则为： [<code>Github用户名</code>].github.io</p>
-<p>建好以后开始配置Github Pages，步骤是：</p>
+    <content><![CDATA[<h4 id="一、Github-Pages-和-hexo是什么"><a href="#一、Github-Pages-和-hexo是什么" class="headerlink" title="一、Github Pages 和 hexo是什么"></a>一、Github Pages 和 hexo是什么</h4><p>   Github Pages是github提供的托管个人博客的工具，不过只能存放静态页面。通过修改项目的setting就可以开启Github Pages服务。配置好以后，它会给你一个可以访问的域名，这样你就不用去买服务器和域名以及备案了。</p>
+<p>   hexo是一个搭建博客的框架，使用了node.js技术。用户只需要写Markdown文件(当然也可以写html)就能快速生成博客文章的页面。</p>
+<p>   把hexo生成的内容直接push到Github上即可发布网站，博客管理变得非常方便。</p>
+<h4 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤"></a>二、步骤</h4><p><strong>1. 配置好一个Github Pages仓库</strong></p>
+<p>   新建一个Github项目,命名规则为： [<code>Github用户名</code>].github.io</p>
+<p>   建好以后开始配置Github Pages，步骤是：</p>
 <blockquote>
 <p>Github项目 -&gt; Setting -&gt; GitHub Pages -&gt; 选择Source</p>
 </blockquote>
-<p>不需要选择主题，如果选择主题则默认用Github提供的jekyll工具搭建网站，而我们使用的是hexo。到这里Github Pages的访问地址已经有了，但是还没有内容，因此不能访问。</p>
-</li>
-<li><p>npm安装hexo</p>
-<p>首先使用npm安装hexo-cli</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>   不需要选择主题，如果选择主题则默认用Github提供的jekyll工具搭建网站，而我们使用的是hexo。到这里Github Pages的访问地址已经有了，但是还没有内容，因此不能访问。</p>
+<p><strong>2. npm安装hexo</strong></p>
+<p>   首先使用npm安装hexo-cli</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
-<p>看到控制台有安装成功的log后，可以开始使用hexo搭建网站了。</p>
-<p>新建一个项目文件夹，比如我的项目文件夹叫sproutlxq，在windows下的命令是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir sproutlxq</span><br></pre></td></tr></table></figure>
+<p>   看到控制台有安装成功的log后，可以开始使用hexo搭建网站了。</p>
+<p>   新建一个项目文件夹，比如我的项目文件夹叫sproutlxq，在windows下的命令是：</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir sproutlxq</span><br></pre></td></tr></table></figure>
 
-<p>cd进入刚才新建的项目文件夹，然后依次运行下面两个命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init   #初始化hexo博客</span><br><span class="line">$ npm install   #安装必要组件</span><br></pre></td></tr></table></figure>
+<p>   cd进入刚才新建的项目文件夹，然后依次运行下面两个命令：</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init   #初始化hexo博客</span><br><span class="line">$ npm install   #安装必要组件</span><br></pre></td></tr></table></figure>
 
-<p>这时候hexo已经为我们创建了一个hello_world的默认网页。但是在新版hexo中，还需要安装一个叫hexo-server的模块，才能启动本地服务。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+<p>   这时候hexo已经为我们创建了一个hello_world的默认网页。但是在新版hexo中，还需要安装一个叫hexo-server的模块，才能启动本地服务。</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
 
-<p>安装成功后启动本地服务：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s   #简写的命令</span><br><span class="line">$ hexo s --debug  #开启debug模式</span><br></pre></td></tr></table></figure>
+<p>   安装成功后启动本地服务：</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s   #简写的命令</span><br><span class="line">$ hexo s --debug  #开启debug模式</span><br></pre></td></tr></table></figure>
 
-<p>当我们看到服务启动成功的提示后，就可以根据提示去访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-</li>
-</ol>
-<ol start="3">
-<li>安装next主题</li>
-<li>发布到Github</li>
-</ol>
+<p>   当我们看到服务启动成功的提示后，就可以根据提示去访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+<p><strong>3. 安装next主题Next</strong></p>
+<p>   hexo官方网站上有很多主题，可以选择自己喜欢的主题。按照github上的star数，Next主题是最受欢迎的。我也选择了Next。</p>
+<p>   在项目文件夹下面，执行主题安装命令：</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+<p>   这个主题会自动被安装到项目文件夹下的themes文件夹内。</p>
+<p>   接下来要启用Next 主题，在站点配置文件中配置。<br>   <code>theme: next</code></p>
+<p>   到此，NexT 主题安装完成。下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。</p>
+<p>   运行 <code>hexo s --debug</code> 命令启动本地服务器，如果看到如下界面，说明安装成功了。</p>
+<p>   <img src="http://theme-next.iissnan.com/uploads/five-minutes-setup/validation-default-scheme-mac.png" alt="Next 主题"></p>
+<p>   Next主题目前提供了五种Scheme供用户选择，默认是Muse，我觉得Pisces也很漂亮，所以更改下主题配置文件<kbd>_config.yml</kbd></p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
+
+<p>   把不启用的scheme先注释掉。刷新页面就可以看到效果了。</p>
+<p>   接下来还可以参考<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">hexo 官方网站</a> ，去配置语言、菜单等内容。</p>
+<p>   有兴趣的还可以仔细浏览主题配置文件和站点配置文件，修改自己感兴趣的配置项。</p>
+<p><strong>4. 发布到Github</strong></p>
+<p>   有两种方式可以把我们上面生成的网站发布到Github上：HTTPS和SSH。HTTPS比较简单，但SSH一劳永逸，我用了SSH的方式，这里偷懒只记录SSH方式。</p>
+<p>   首先，要安装hexo-deployer-git组件。</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>   看下本地git的配置：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name</span><br><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure></p>
+<p>   如果没有配置好就配置一下。</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name [your name]</span><br><span class="line">git config --global user.email [your email]</span><br></pre></td></tr></table></figure>
+<p>   接下来，我们就可以根据上面配置的用户名与邮箱生成SSH公钥私钥（RSA算法），我们将公钥发给GitHub的SSH管理员时，我们如果拿着私钥去访问GitHub，GitHub SSH管理员就可以进行公钥私钥配对，来完成认证。当然，第一次将公钥给GitHub时，GitHub管理员是需要我们输入密码来认证的。</p>
+<p>   确认配置过git用户名与邮箱之后，运行以下命令，生成公钥私钥。连续回车使用默认参数。</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;xxx@xxx.com&quot;  #邮箱为GitHub邮箱</span><br></pre></td></tr></table></figure>
+
+<p>   根据控制台的提示，找到公钥私钥存放的位置。按照下面的步骤把公钥告诉Github。</p>
+<blockquote>
+<p>将公钥复制 -&gt; 打开GitHub -&gt; settings -&gt; SSH and GPG keys -&gt; New SSH key -&gt; title随便起，将公钥复制到key框中 -&gt; Add SSH key -&gt; 输入GitHub密码 -&gt; 成功。</p>
+</blockquote>
+<p>   接下来修改站点配置文档 <kbd>_config.yml</kbd></p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;deployment.html</span><br><span class="line">deploy:</span><br><span class="line">   type: git</span><br><span class="line">   repository: git@github.com:xxx&#x2F;xxx.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
+
+<p>   将repository修改为我们Github的ssh地址。SSH地址可以在GitHub -&gt; GitHub page库 -&gt; clone or download -&gt; Use SSH获取.</p>
+<p>   修改完成之后，可以运行以下命令来进行部署：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean            #清除之前静态页面</span><br><span class="line">hexo generate            #生成静态页面</span><br><span class="line">hexo deploy(可缩写为d)  # 部署</span><br></pre></td></tr></table></figure></p>
+<p>   至此部署完成，访问github page给的地址，就可以看到自己的个人页面了。<br>   <a href="https://sproutlxq.github.io/">https://sproutlxq.github.io/</a></p>
 ]]></content>
       <tags>
         <tag>hexo</tag>
