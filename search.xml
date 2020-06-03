@@ -51,55 +51,6 @@
       </tags>
   </entry>
   <entry>
-    <title>&#39;swiper源码解析和react实现轮播图&#39;</title>
-    <url>/2020/06/03/swiper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E5%92%8Creact%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>swiper</tag>
-        <tag>轮播图</tag>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《深入理解ES6》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《TensorFlow学习指南》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《用Python进行数据分析》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>为什么建站</title>
-    <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
-    <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝七个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
-<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
-<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下与人交流的能力，也许与人多交流也会产生乐趣呢？那么就从写博客开始吧！</p>
-<p>   另一个目的，是希望博客分享的方式，逼迫我把一些知识学得更透彻，事情做到更精细，然后多多总结，并把学过的内容沉淀下来（现在的工作与专业无关，学过的知识用不上，所以遗忘很严重，每年都要重学一遍，真的很浪费时间）。</p>
-<p>   这个站的文章可能会很杂，包括学习总结、读书笔记、观影报告、日记等等，所以不想按照分类来组织，搜索的话就依靠Tag。这样我可以在写作灵感乍现的时候没有分类负担的先写下来再说。</p>
-<p>   写作频率还是要对自己有些要求的，每周至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
-]]></content>
-      <tags>
-        <tag>日记</tag>
-        <tag>第一篇</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>&#39;用策略模式设计复杂表单的探索&#39;</title>
-    <url>/2020/06/03/%E7%94%A8%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E7%9A%84%E6%8E%A2%E7%B4%A2/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Github Pages + hexo Next 搭建个人博客</title>
     <url>/2020/05/07/Github-Page-hexo-Next-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、Github-Pages-和-hexo是什么"><a href="#一、Github-Pages-和-hexo是什么" class="headerlink" title="一、Github Pages 和 hexo是什么"></a>一、Github Pages 和 hexo是什么</h4><p>   Github Pages是github提供的托管个人博客的工具，不过只能存放静态页面。通过修改项目的setting就可以开启Github Pages服务。配置好以后，它会给你一个可以访问的域名，这样你就不用去买服务器和域名以及备案了。</p>
@@ -179,6 +130,56 @@
       <tags>
         <tag>hexo</tag>
         <tag>Github Pages</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>swiper源码解析和react实现轮播图</title>
+    <url>/2020/06/03/swiper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E5%92%8Creact%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+      <tags>
+        <tag>swiper</tag>
+        <tag>轮播图</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《TensorFlow学习指南》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>《深入理解ES6》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>用策略模式设计复杂表单的探索</title>
+    <url>/2020/06/03/%E7%94%A8%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E7%9A%84%E6%8E%A2%E7%B4%A2/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>《用Python进行数据分析》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>为什么建站</title>
+    <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
+    <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝七个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
+<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
+<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下与人交流的能力，也许与人多交流也会产生乐趣呢？那么就从写博客开始吧！</p>
+<p>   另一个目的，是希望博客分享的方式，逼迫我把一些知识学得更透彻，事情做到更精细，然后多多总结，并把学过的内容沉淀下来（现在的工作与专业无关，学过的知识用不上，所以遗忘很严重，每年都要重学一遍，真的很浪费时间）。</p>
+<p>   这个站的文章可能会很杂，包括学习总结、读书笔记、观影报告、日记等等，所以不想按照分类来组织，搜索的话就依靠Tag。这样我可以在写作灵感乍现的时候没有分类负担的先写下来再说。</p>
+<p>   写作频率还是要对自己有些要求的，每周至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
+]]></content>
+      <tags>
+        <tag>日记</tag>
+        <tag>第一篇</tag>
       </tags>
   </entry>
 </search>
