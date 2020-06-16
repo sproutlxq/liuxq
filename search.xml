@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>《TensorFlow学习指南》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
     <title>CSS经典面试题-四种方式实现两列布局</title>
     <url>/2020/05/13/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<p>   典型的两列布局就是下图这个样子。<br>   外层父容器是<i>.container</i>，左侧有固定宽度的<i>nav</i>，右侧的<i>section</i>自适应宽度。</p>
@@ -42,7 +48,7 @@
 <p>   但是这个方法有一个要求： 右侧的内容必须足够多，能够填充剩余宽度。</p>
 <h4 id="第四种方式：利用flex实现"><a href="#第四种方式：利用flex实现" class="headerlink" title="第四种方式：利用flex实现"></a>第四种方式：利用flex实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    display: -webkit-flex;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">nav &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    -webkit-flex: 1;</span><br><span class="line">            flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>   待填坑</p>
+<p>   Flex打算放在另一篇文章里单独总结。</p>
 <p>   参考链接： <a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">http://zh.learnlayout.com/</a></p>
 ]]></content>
       <tags>
@@ -126,6 +132,7 @@
 <p>  这时候在post文件夹下就生成了一个新的.md文件，里面就可以写自己的新文章了。</p>
 <p>  hexo文章里引用本地图片一般需要使用npm安装新的hexo功能插件，比较麻烦，更推荐使用图床服务，比如：<a href="https://sm.ms/" target="_blank" rel="noopener">https://sm.ms/</a></p>
 <p><strong>6. 博文备份</strong></p>
+<p>  <a href="https://www.dazhuanlan.com/2019/08/16/5d560f66bf886/?__cf_chl_jschl_tk__=ee3d3dad05b5e8f12886d38e3ee34ed366c1953b-1590503252-0-AZX9LKyDCW2ZIQqWRoO5y6RjGyWYNY_QX-MZ-HWFVa97oUpF1Tbl_u12xDvMn5viVEuDVOGHZ5nb7jhDaXOJEGDUwK8_oc7sA3Q5_pMPb6lZK6hJPSscaX9KBUufRUC2_wNI5VWDJRt9AXaLI_-aMZMMPAbGffnbVPz8Rjm6GRZ45F2mOBwWniiPkT_u73Y2z3Vktn3Rjt803Ocm-uZKNNrqJSMvP4wf6eXG13j633sgw9707eZQMVa4qr96ggGlDkKUwjPn_Tln0_5WuCxyzUs5bPTd-oDlUs9EY9MkFqp61B4LWqPn2tinbQjEwX-xww" target="_blank" rel="noopener">https://www.dazhuanlan.com/2019/08/16/5d560f66bf886/?__cf_chl_jschl_tk__=ee3d3dad05b5e8f12886d38e3ee34ed366c1953b-1590503252-0-AZX9LKyDCW2ZIQqWRoO5y6RjGyWYNY_QX-MZ-HWFVa97oUpF1Tbl_u12xDvMn5viVEuDVOGHZ5nb7jhDaXOJEGDUwK8_oc7sA3Q5_pMPb6lZK6hJPSscaX9KBUufRUC2_wNI5VWDJRt9AXaLI_-aMZMMPAbGffnbVPz8Rjm6GRZ45F2mOBwWniiPkT_u73Y2z3Vktn3Rjt803Ocm-uZKNNrqJSMvP4wf6eXG13j633sgw9707eZQMVa4qr96ggGlDkKUwjPn_Tln0_5WuCxyzUs5bPTd-oDlUs9EY9MkFqp61B4LWqPn2tinbQjEwX-xww</a></p>
 ]]></content>
       <tags>
         <tag>hexo</tag>
@@ -133,19 +140,8 @@
       </tags>
   </entry>
   <entry>
-    <title>swiper源码解析和react实现轮播图</title>
-    <url>/2020/06/03/swiper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E5%92%8Creact%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-      <tags>
-        <tag>swiper</tag>
-        <tag>轮播图</tag>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《TensorFlow学习指南》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <title>《用Python进行数据分析》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>待填坑</p>
 ]]></content>
   </entry>
@@ -156,26 +152,19 @@
 ]]></content>
   </entry>
   <entry>
-    <title>用策略模式设计复杂表单的探索</title>
-    <url>/2020/06/03/%E7%94%A8%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E7%9A%84%E6%8E%A2%E7%B4%A2/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《用Python进行数据分析》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
+    <title>&#39;懒加载&#39;</title>
+    <url>/2020/06/16/%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>为什么建站</title>
     <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
     <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝七个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
-<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
-<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下与人交流的能力，也许与人多交流也会产生乐趣呢？那么就从写博客开始吧！</p>
+<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人深入交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
+<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下主动与人交流和分享的能力，而不仅仅是因为工作沟通以及朋友主动来找我。那么就从写博客开始吧！</p>
 <p>   另一个目的，是希望博客分享的方式，逼迫我把一些知识学得更透彻，事情做到更精细，然后多多总结，并把学过的内容沉淀下来（现在的工作与专业无关，学过的知识用不上，所以遗忘很严重，每年都要重学一遍，真的很浪费时间）。</p>
 <p>   这个站的文章可能会很杂，包括学习总结、读书笔记、观影报告、日记等等，所以不想按照分类来组织，搜索的话就依靠Tag。这样我可以在写作灵感乍现的时候没有分类负担的先写下来再说。</p>
-<p>   写作频率还是要对自己有些要求的，每周至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
+<p>   写作频率还是要对自己有些要求的，每两周至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
 ]]></content>
       <tags>
         <tag>日记</tag>
