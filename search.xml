@@ -51,6 +51,12 @@
       </tags>
   </entry>
   <entry>
+    <title>《深入理解ES6》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
     <title>《TensorFlow学习指南》读书笔记</title>
     <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>待填坑</p>
@@ -140,12 +146,6 @@
       </tags>
   </entry>
   <entry>
-    <title>《深入理解ES6》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
     <title>《用Python进行数据分析》读书笔记</title>
     <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>待填坑</p>
@@ -172,8 +172,7 @@
     <content><![CDATA[<p>   这周接到了做一个公司卡通主题形象投票活动的需求，页面意外的设计的还蛮漂亮的（真的是喜欢二次元的设计风格哈哈）。我已经很久没有自己写这种简单页面了，这次的需求很难得的让我产生了兴趣，决定自己来开发。</p>
 <p>   既然要写就要有练手效果才行，所以我想把各个细节做到最好，比如鼠标交互时的自定义样式（又当切图仔又当设计的去找了好看的资源），比如textarea的样式、校验和控制，比如尽量用最少的CSS代码量实现布局… 不过最后花了我最多时间的是懒加载。</p>
 <p>   页面上有不少信息量丰富的图片，我决定把大图们做一些切割，逐步来加载。好几年前面试的时候曾经看过懒加载的知识，但其实挺少碰到这种图片多到需要去用懒加载做性能优化的场景，还没有真的用过。随手搜了下帖子，发现这个东西其实没有那么简单。这篇文章就用来总结一下吧。</p>
-<p>   一、 什么是懒加载</p>
-<p>   懒加载简单说就是延迟加载、按需加载，常常和预加载作为相对概念一起提及。最常见的应用场景是：</p>
+<h4 id="一、-什么是懒加载"><a href="#一、-什么是懒加载" class="headerlink" title="一、 什么是懒加载"></a>一、 什么是懒加载</h4><p>   懒加载简单说就是延迟加载、按需加载，常常和预加载作为相对概念一起提及。最常见的应用场景是：</p>
 <blockquote>
 <p>页面较长，屏幕的可视区域有限。先不加载不可见区域的图片，等到进入视口可见位置时才开始加载。</p>
 </blockquote>
@@ -181,8 +180,7 @@
 <p>   在开发者工具中打开priority，可以看到浏览器加载资源的优先级。<br>   <img src="https://hateonion.me/posts/19jan30/image-high-priority.jpg" alt="image-high-priority"></p>
 <p>   这些优先级标记为high的图片会占用其他资源的下载带宽，可能会造成某些比较关键的资源（比如xhr call）加载缓慢，拖慢页面速度。</p>
 <p>   用懒加载可以降低这些暂时不是“刚需”的图片资源的优先级，缩短onload事件时间。下图是应用了懒加载之后的优先级。<br>   <img src="https://hateonion.me/posts/19jan30/image-lazy-load.jpg" alt="image-lazy-load"></p>
-<p>二、 基础版懒加载</p>
-<p>   页面中的img元素，如果没有src属性，浏览器就不会发出请求去下载图片，只有通过javascript设置了图片路径，浏览器才会发送请求。所以懒加载的实现思路是：</p>
+<h4 id="二、-基础版懒加载"><a href="#二、-基础版懒加载" class="headerlink" title="二、 基础版懒加载"></a>二、 基础版懒加载</h4><p>   页面中的img元素，如果没有src属性，浏览器就不会发出请求去下载图片，只有通过javascript设置了图片路径，浏览器才会发送请求。所以懒加载的实现思路是：</p>
 <blockquote>
 <p>不设置页面中<code>img</code>标签的<code>src</code>属性值或者将其指向同一个占位图。图片的实际地址存在<code>img</code>标签自定义的一个属性中，如：<code>data-src</code>。监听scroll(或resize、orientationChange)事件，根据scrollTop判断图片是否在视口内，滚动到某个位置时，如果在视口内，则动态的将<code>url</code>替换成实际的<code>data-src</code>。这个时候浏览器才会去加载图片。</p>
 </blockquote>
@@ -201,15 +199,14 @@
 
 </li>
 </ol>
-<p>三、 使用getBoundingClientRect方法实现懒加载</p>
-<p>   在上面的方法中，使用了三个元素计算属性来判断，且要兼顾各种浏览器，比较麻烦。getBoundingClientRect方法只需要一行代码就可以得到元素相对视口的位置。<br>   目前常见浏览器都支持getBoundingClientRect。</p>
+<h4 id="三、-使用getBoundingClientRect方法实现懒加载"><a href="#三、-使用getBoundingClientRect方法实现懒加载" class="headerlink" title="三、 使用getBoundingClientRect方法实现懒加载"></a>三、 使用getBoundingClientRect方法实现懒加载</h4><p>   在上面的方法中，使用了三个元素计算属性来判断，且要兼顾各种浏览器，比较麻烦。getBoundingClientRect方法只需要一行代码就可以得到元素相对视口的位置。<br>   目前常见浏览器都支持getBoundingClientRect。</p>
 <p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">Element.getBoundingClientRect()</a>返回一个DOMRect object。具体结构如下：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    top: &#39;元素顶部相对于视口顶部的距离&#39;,</span><br><span class="line">    bottom: &#39;元素底部相对于视口顶部的距离&#39;,</span><br><span class="line">    left: &#39;元素左边相对于视口左边的距离&#39;,</span><br><span class="line">    right: &#39;元素右边相对于视口左边的距离&#39;,</span><br><span class="line">    height: &#39;元素高度&#39;,</span><br><span class="line">    width: &#39;元素宽度&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>   所以上述if的判断条件改为：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">···</span><br><span class="line">bound &#x3D; images[i].getBoundingClientRect();</span><br><span class="line">if(bound.top &lt;&#x3D; clientHeight) &#123;</span><br><span class="line">    ···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>四、 使用IntersectionObserver API实现懒加载</p>
-<p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver" target="_blank" rel="noopener">IntersectionObserver API</a></p>
-<p>五、 防抖</p>
-<p>六、 原生chrome支持懒加载</p>
-<p>七、 background-image</p>
-]]></content>
+<h4 id="四、-使用IntersectionObserver-API实现懒加载"><a href="#四、-使用IntersectionObserver-API实现懒加载" class="headerlink" title="四、 使用IntersectionObserver API实现懒加载"></a>四、 使用IntersectionObserver API实现懒加载</h4><p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver" target="_blank" rel="noopener">IntersectionObserver API</a></p>
+<h4 id="五、-防抖"><a href="#五、-防抖" class="headerlink" title="五、 防抖"></a>五、 防抖</h4><h4 id="六、-原生chrome支持懒加载"><a href="#六、-原生chrome支持懒加载" class="headerlink" title="六、 原生chrome支持懒加载"></a>六、 原生chrome支持懒加载</h4><h4 id="七、-background-image"><a href="#七、-background-image" class="headerlink" title="七、 background-image"></a>七、 background-image</h4>]]></content>
+      <tags>
+        <tag>懒加载</tag>
+        <tag>Lazyload</tag>
+      </tags>
   </entry>
 </search>
