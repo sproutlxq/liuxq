@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>《TensorFlow学习指南》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
     <title>CSS经典面试题-四种方式实现两列布局</title>
     <url>/2020/05/13/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<p>   典型的两列布局就是下图这个样子。<br>   外层父容器是<i>.container</i>，左侧有固定宽度的<i>nav</i>，右侧的<i>section</i>自适应宽度。</p>
@@ -55,6 +49,12 @@
         <tag>CSS</tag>
         <tag>Layout</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《TensorFlow学习指南》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
   </entry>
   <entry>
     <title>Github Pages + hexo Next 搭建个人博客</title>
@@ -140,21 +140,16 @@
       </tags>
   </entry>
   <entry>
-    <title>《用Python进行数据分析》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
     <title>《深入理解ES6》读书笔记</title>
     <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>待填坑</p>
 ]]></content>
   </entry>
   <entry>
-    <title>&#39;懒加载&#39;</title>
-    <url>/2020/06/16/%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
-    <content><![CDATA[]]></content>
+    <title>《用Python进行数据分析》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
   </entry>
   <entry>
     <title>为什么建站</title>
@@ -170,5 +165,51 @@
         <tag>日记</tag>
         <tag>第一篇</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>懒加载</title>
+    <url>/2020/06/16/%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<p>   这周接到了做一个公司卡通主题形象投票活动的需求，页面意外的设计的还蛮漂亮的（真的是喜欢二次元的设计风格哈哈）。我已经很久没有自己写这种简单页面了，这次的需求很难得的让我产生了兴趣，决定自己来开发。</p>
+<p>   既然要写就要有练手效果才行，所以我想把各个细节做到最好，比如鼠标交互时的自定义样式（又当切图仔又当设计的去找了好看的资源），比如textarea的样式、校验和控制，比如尽量用最少的CSS代码量实现布局… 不过最后花了我最多时间的是懒加载。</p>
+<p>   页面上有不少信息量丰富的图片，我决定把大图们做一些切割，逐步来加载。好几年前面试的时候曾经看过懒加载的知识，但其实挺少碰到这种图片多到需要去用懒加载做性能优化的场景，还没有真的用过。随手搜了下帖子，发现这个东西其实没有那么简单。这篇文章就用来总结一下吧。</p>
+<p>   一、 什么是懒加载</p>
+<p>   懒加载简单说就是延迟加载、按需加载，常常和预加载作为相对概念一起提及。最常见的应用场景是：</p>
+<blockquote>
+<p>页面较长，屏幕的可视区域有限。先不加载不可见区域的图片，等到进入视口可见位置时才开始加载。</p>
+</blockquote>
+<p>   浏览器有自己的资源加载优先级。<br>   <img src="https://hateonion.me/posts/19jan30/resource-priority.jpg" alt="浏览器加载资源顺序"></p>
+<p>   在开发者工具中打开priority，可以看到浏览器加载资源的优先级。<br>   <img src="https://hateonion.me/posts/19jan30/image-high-priority.jpg" alt="image-high-priority"></p>
+<p>   这些优先级标记为high的图片会占用其他资源的下载带宽，可能会造成某些比较关键的资源（比如xhr call）加载缓慢，拖慢页面速度。</p>
+<p>   用懒加载可以降低这些暂时不是“刚需”的图片资源的优先级，缩短onload事件时间。下图是应用了懒加载之后的优先级。<br>   <img src="https://hateonion.me/posts/19jan30/image-lazy-load.jpg" alt="image-lazy-load"></p>
+<p>二、 基础版懒加载</p>
+<p>   页面中的img元素，如果没有src属性，浏览器就不会发出请求去下载图片，只有通过javascript设置了图片路径，浏览器才会发送请求。所以懒加载的实现思路是：</p>
+<blockquote>
+<p>不设置页面中<code>img</code>标签的<code>src</code>属性值或者将其指向同一个占位图。图片的实际地址存在<code>img</code>标签自定义的一个属性中，如：<code>data-src</code>。监听scroll(或resize、orientationChange)事件，根据scrollTop判断图片是否在视口内，滚动到某个位置时，如果在视口内，则动态的将<code>url</code>替换成实际的<code>data-src</code>。这个时候浏览器才会去加载图片。</p>
+</blockquote>
+<p>   <img src="https://lilywei739.github.io/img/20170206/20170206-1.jpg" alt="视口位置"></p>
+<ol>
+<li><p>可视窗口高度：<br>window.innerHeight(标准模式)<br>document.documentElement.clientHeight(兼容IE9以下浏览器)<br>document.body.clientHeight(混杂模式)</p>
+</li>
+<li><p>浏览器窗口顶部与文档顶部之间的距离，也就是滚动条滚动的距离：<br>window.pagYoffset(标准模式)<br>document.documentElement.scrollTop(兼容IE9以下浏览器)<br>document.body.scrollTop(混杂模式)</p>
+</li>
+<li><p>元素的尺寸(outerWidth)：e.offsetWidth</p>
+</li>
+<li><p>元素距文档顶部的距离：e.offsetTop</p>
+<p>当offsetTop - scroolTop &lt; clientHeight，则图片进入了可视区内，即：<br>offsetTop &lt; clientHeight + scroolTop</p>
+<p>具体实现：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Lazyload 1&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        img &#123;</span><br><span class="line">        display: block;</span><br><span class="line">        margin-bottom: 50px;</span><br><span class="line">        height: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;1.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;2.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;3.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;4.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;5.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;6.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;7.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;8.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;9.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;10.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;11.png&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;images&#x2F;loading.gif&quot; data-src&#x3D;&quot;images&#x2F;12.png&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function lazyload() &#123;</span><br><span class="line">            var images &#x3D; document.getElementsByTagName(&#39;img&#39;);</span><br><span class="line">            var len    &#x3D; images.length;</span><br><span class="line">            var n      &#x3D; 0;      &#x2F;&#x2F;存储图片加载到的位置，避免每次都从第一张图片开始遍历		</span><br><span class="line">            return function() &#123;</span><br><span class="line">                var seeHeight &#x3D; document.documentElement.clientHeight;</span><br><span class="line">                var scrollTop &#x3D; document.documentElement.scrollTop || document.body.scrollTop;</span><br><span class="line">                for(var i &#x3D; n; i &lt; len; i++) &#123;</span><br><span class="line">                    if(images[i].offsetTop &lt; seeHeight + scrollTop) &#123;</span><br><span class="line">                        if(images[i].getAttribute(&#39;src&#39;) &#x3D;&#x3D;&#x3D; &#39;images&#x2F;loading.gif&#39;) &#123;</span><br><span class="line">                            images[i].src &#x3D; images[i].getAttribute(&#39;data-src&#39;);</span><br><span class="line">                        &#125;</span><br><span class="line">                        n &#x3D; n + 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        var loadImages &#x3D; lazyload();</span><br><span class="line">        loadImages();          &#x2F;&#x2F;初始化首页的页面图片</span><br><span class="line">        window.addEventListener(&#39;scroll&#39;, loadImages, false);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>三、 使用getBoundingClientRect方法实现懒加载</p>
+<p>   在上面的方法中，使用了三个元素计算属性来判断，且要兼顾各种浏览器，比较麻烦。getBoundingClientRect方法只需要一行代码就可以得到元素相对视口的位置。<br>   目前常见浏览器都支持getBoundingClientRect。</p>
+<p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">Element.getBoundingClientRect()</a>返回一个DOMRect object。具体结构如下：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    top: &#39;元素顶部相对于视口顶部的距离&#39;,</span><br><span class="line">    bottom: &#39;元素底部相对于视口顶部的距离&#39;,</span><br><span class="line">    left: &#39;元素左边相对于视口左边的距离&#39;,</span><br><span class="line">    right: &#39;元素右边相对于视口左边的距离&#39;,</span><br><span class="line">    height: &#39;元素高度&#39;,</span><br><span class="line">    width: &#39;元素宽度&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   所以上述if的判断条件改为：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">···</span><br><span class="line">bound &#x3D; images[i].getBoundingClientRect();</span><br><span class="line">if(bound.top &lt;&#x3D; clientHeight) &#123;</span><br><span class="line">    ···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>四、 使用IntersectionObserver API实现懒加载</p>
+<p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver" target="_blank" rel="noopener">IntersectionObserver API</a></p>
+<p>五、 防抖</p>
+<p>六、 原生chrome支持懒加载</p>
+<p>七、 background-image</p>
+]]></content>
   </entry>
 </search>
