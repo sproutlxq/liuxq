@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://lilywei739.github.io/img/20170206/20170206-1.jpg">
 <meta property="og:image" content="https://image.zhangxinxu.com/image/blog/201909/2019-09-29_212826.png">
 <meta property="article:published_time" content="2020-06-16T05:53:24.000Z">
-<meta property="article:modified_time" content="2020-06-19T15:37:19.734Z">
+<meta property="article:modified_time" content="2020-06-19T15:40:28.219Z">
 <meta property="article:author" content="liuxq">
 <meta property="article:tag" content="懒加载">
 <meta property="article:tag" content="Lazyload">
@@ -430,7 +430,7 @@
 </li>
 <li><p>intersectionRatio：目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0</p>
 <p>使用IntersectionObserver API来实现懒加载的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function query(selector) &#123;</span><br><span class="line">    return Array.from(document.querySelectorAll(selector));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var io &#x3D; new IntersectionObserver(function(items) &#123;</span><br><span class="line">    items.forEach(function(item) &#123;</span><br><span class="line">        var target &#x3D; item.target;</span><br><span class="line">        if(target.getAttribute(&#39;src&#39;) &#x3D;&#x3D; &#39;images&#x2F;loading.gif&#39;) &#123;</span><br><span class="line">            target.src &#x3D; target.getAttribute(&#39;data-src&#39;);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">query(&#39;img&#39;).forEach(function(item) &#123;</span><br><span class="line">    io.observe(item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function query(selector) &#123;</span><br><span class="line">    return Array.from(document.querySelectorAll(selector));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var io &#x3D; new IntersectionObserver(function(items) &#123;</span><br><span class="line">    items.forEach(function(item) &#123;</span><br><span class="line">        if (item.isIntersecting) &#123;</span><br><span class="line">            var target &#x3D; item.target;</span><br><span class="line">            if(target.getAttribute(&#39;src&#39;) &#x3D;&#x3D; &#39;images&#x2F;loading.gif&#39;) &#123;</span><br><span class="line">                target.src &#x3D; target.getAttribute(&#39;data-src&#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">query(&#39;img&#39;).forEach(function(item) &#123;</span><br><span class="line">    io.observe(item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -442,18 +442,24 @@
 <p>   更多的关于这个特性的研究参考下面链接：</p>
 <p>   <a href="https://www.zhangxinxu.com/wordpress/2019/09/native-img-loading-lazy/?shrink=1" target="_blank" rel="noopener">chrome原生支持lazyloading</a></p>
 <p>   这个特性实在太棒了，可惜通用还需要时间。</p>
-<h4 id="七、-background-image"><a href="#七、-background-image" class="headerlink" title="七、 background-image"></a>七、 background-image</h4><p>   有时候页面的图片不是通过src，而是通过给element添加background-image这个CSS属性添实现的。<br>   这个时候只要给element添加一个lazy类，先将background-image设为none,等到元素在视口出现时移除lazy类即可。</p>
+<h4 id="七、-background-image"><a href="#七、-background-image" class="headerlink" title="七、 background-image"></a>七、 background-image</h4><p>   有时候页面的图片不是通过src，而是通过给element添加background-image这个CSS属性实现的。<br>   这个时候只要给element添加一个lazy类，先将background-image设为none,等到元素在视口出现时移除lazy类即可。</p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#bg-image.lazy &#123;</span><br><span class="line">    background-image: none;</span><br><span class="line">&#125;</span><br><span class="line">#bg-image &#123;</span><br><span class="line">    background-image: url(&quot;https:&#x2F;&#x2F;ik.imagekit.io&#x2F;demo&#x2F;img&#x2F;image1.jpeg?tr&#x3D;w-400,h-300&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(&quot;DOMContentLoaded&quot;, function() &#123;</span><br><span class="line">    var lazyloadElements &#x3D; document.querySelectorAll(&quot;.lazy&quot;);</span><br><span class="line">    var io &#x3D; new IntersectionObserver(function(items, observer) &#123;</span><br><span class="line">        items.forEach(function(item) &#123;</span><br><span class="line">            if (item.isIntersecting) &#123;</span><br><span class="line">                var element &#x3D; item.target;</span><br><span class="line">                item.classList.remove(&quot;lazy&quot;);</span><br><span class="line">                io.unobserve(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    lazyloadElements.forEach(function(element) &#123;</span><br><span class="line">        io.observe(element);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h4 id="八、-进一步优化"><a href="#八、-进一步优化" class="headerlink" title="八、 进一步优化"></a>八、 进一步优化</h4><pre><code>其实懒加载还有很多可以优化的地方，比如说：
-1. 快速滚动后只加载头尾的图片，忽略中间的图片
-2. 根据滚动速度提前加载几屏的图片，而不是等到出现在视口时再去加载
-3. placeholder尺寸不确定时，如何保证加载时页面不reflow从而出现抖动
-4. 如果懒加载失败，可以点击图片再次发起请求
-
-这一节先挖个坑，有空再写上面四个场景怎么处理。</code></pre><h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><pre><code>1. https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
+<h4 id="八、-进一步优化"><a href="#八、-进一步优化" class="headerlink" title="八、 进一步优化"></a>八、 进一步优化</h4><p>   其实懒加载还有很多可以优化的地方，比如说：</p>
+<ol>
+<li><p>快速滚动后只加载头尾的图片，忽略中间的图片</p>
+</li>
+<li><p>根据滚动速度提前加载几屏的图片，而不是等到出现在视口时再去加载</p>
+</li>
+<li><p>placeholder尺寸不确定时，如何保证加载时页面不reflow从而出现抖动</p>
+</li>
+<li><p>如果懒加载失败，可以点击图片再次发起请求</p>
+<p>这一节先挖个坑，有空再写上面四个场景怎么处理。</p>
+</li>
+</ol>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><pre><code>1. https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 2. https://zhuanlan.zhihu.com/p/25455672
 3. https://segmentfault.com/a/1190000017795499
 4. https://juejin.im/post/5e84a7d7f265da47ec762306
