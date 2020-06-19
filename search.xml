@@ -7,18 +7,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>《深入理解ES6》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《用Python进行数据分析》读书笔记</title>
-    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
-]]></content>
-  </entry>
-  <entry>
     <title>CSS经典面试题-四种方式实现两列布局</title>
     <url>/2020/05/13/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<p>   典型的两列布局就是下图这个样子。<br>   外层父容器是<i>.container</i>，左侧有固定宽度的<i>nav</i>，右侧的<i>section</i>自适应宽度。</p>
@@ -152,6 +140,12 @@
       </tags>
   </entry>
   <entry>
+    <title>《深入理解ES6》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
     <title>为什么建站</title>
     <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
     <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝七个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
@@ -165,6 +159,12 @@
         <tag>日记</tag>
         <tag>第一篇</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《用Python进行数据分析》读书笔记</title>
+    <url>/2020/06/03/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
   </entry>
   <entry>
     <title>懒加载</title>
@@ -203,7 +203,8 @@
 <p>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">Element.getBoundingClientRect()</a>返回一个DOMRect object。具体结构如下：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    top: &#39;元素顶部相对于视口顶部的距离&#39;,</span><br><span class="line">    bottom: &#39;元素底部相对于视口顶部的距离&#39;,</span><br><span class="line">    left: &#39;元素左边相对于视口左边的距离&#39;,</span><br><span class="line">    right: &#39;元素右边相对于视口左边的距离&#39;,</span><br><span class="line">    height: &#39;元素高度&#39;,</span><br><span class="line">    width: &#39;元素宽度&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>   所以上述if的判断条件改为：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">···</span><br><span class="line">bound &#x3D; images[i].getBoundingClientRect();</span><br><span class="line">if(bound.top &lt;&#x3D; clientHeight) &#123;</span><br><span class="line">    ···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>   使用getBoundingClientRect方法来实现，虽然很简单，也可以很好兼容，但有个缺点：<br>   由于scroll事件密集发生，计算量很大，容易造成性能问题。</p>
-<h4 id="四、-节流与防抖"><a href="#四、-节流与防抖" class="headerlink" title="四、 节流与防抖"></a>四、 节流与防抖</h4><p>   在上面的解决方案中，scroll频繁触发，所以在做事件绑定的时候，可以对 lazyload 函数进行函数节流（throttle）与函数防抖（debounce）处理，在一段时间内只执行一次scroll响应，不重复执行，且延迟一段时间执行，如果这段延迟时间内重复触发，那么就重新计时。</p>
+<h4 id="四、-节流与防抖"><a href="#四、-节流与防抖" class="headerlink" title="四、 节流与防抖"></a>四、 节流与防抖</h4><p>   在上面的解决方案中，scroll频繁触发，所以在做事件绑定的时候，可以对 lazyload 函数进行函数节流（throttle）与函数防抖（debounce）处理。简单的解释就是，如果你一直频繁触发，我就等到你最后一次触发再开始计时，一段时间后稳定下来我再执行，但同时在某个最小时间范围内我至少要执行一次。</p>
+<p>   在一段时间内至少执行一次scroll响应，且每次频繁触发要延迟一段时间执行scroll响应，如果这段延迟时间内重复触发，那么就重新计时。</p>
    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function throttle(fn, delay, atleast) &#123;</span><br><span class="line">    var timeout &#x3D; null,</span><br><span class="line">    startTime &#x3D; new Date();</span><br><span class="line">    return function() &#123;</span><br><span class="line">        var curTime &#x3D; new Date();</span><br><span class="line">        clearTimeout(timeout);</span><br><span class="line">        if(curTime - startTime &gt;&#x3D; atleast) &#123;</span><br><span class="line">            fn();</span><br><span class="line">            startTime &#x3D; curTime;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            timeout &#x3D; setTimeout(fn, delay);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">window.addEventListener(&#39;scroll&#39;, throttle(loadImages, 500, 1000), false);</span><br></pre></td></tr></table></figure>
 
 <p>   设置了 500ms 的延迟，和 1000ms 的间隔，当超过 1000ms 未触发该函数，则立即执行该函数，不然则延迟 500ms 执行该函数。</p>
@@ -238,12 +239,11 @@
 
 <p>   更多的关于这个特性的研究参考下面链接：</p>
 <p>   <a href="https://www.zhangxinxu.com/wordpress/2019/09/native-img-loading-lazy/?shrink=1" target="_blank" rel="noopener">chrome原生支持lazyloading</a></p>
+<p>   这个特性实在太棒了，可惜通用还需要时间。</p>
 <h4 id="七、-background-image"><a href="#七、-background-image" class="headerlink" title="七、 background-image"></a>七、 background-image</h4><p>   有时候页面的图片不是通过src，而是通过给element添加background-image这个CSS属性添实现的。<br>   这个时候只要给element添加一个lazy类，先将background-image设为none,等到元素在视口出现时移除lazy类即可。</p>
    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#bg-image.lazy &#123;</span><br><span class="line">    background-image: none;</span><br><span class="line">&#125;</span><br><span class="line">#bg-image &#123;</span><br><span class="line">    background-image: url(&quot;https:&#x2F;&#x2F;ik.imagekit.io&#x2F;demo&#x2F;img&#x2F;image1.jpeg?tr&#x3D;w-400,h-300&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.addEventListener(&quot;DOMContentLoaded&quot;, function() &#123;</span><br><span class="line">    var lazyloadElements &#x3D; document.querySelectorAll(&quot;.lazy&quot;);</span><br><span class="line">    var io &#x3D; new IntersectionObserver(function(items, observer) &#123;</span><br><span class="line">        items.forEach(function(item) &#123;</span><br><span class="line">            if (item.isIntersecting) &#123;</span><br><span class="line">                var element &#x3D; item.target;</span><br><span class="line">                item.classList.remove(&quot;lazy&quot;);</span><br><span class="line">                io.unobserve(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    lazyloadElements.forEach(function(element) &#123;</span><br><span class="line">        io.observe(element);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
 
 <h4 id="八、-进一步优化"><a href="#八、-进一步优化" class="headerlink" title="八、 进一步优化"></a>八、 进一步优化</h4><pre><code>其实懒加载还有很多可以优化的地方，比如说：
 1. 快速滚动后只加载头尾的图片，忽略中间的图片
