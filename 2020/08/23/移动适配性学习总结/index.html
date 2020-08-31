@@ -85,13 +85,17 @@
 <meta property="og:url" content="https://sproutlxq.github.io/2020/08/23/%E7%A7%BB%E5%8A%A8%E9%80%82%E9%85%8D%E6%80%A7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="sproutlxq">
 <meta property="og:description" content="一、 相关概念 物理像素(physical pixel) 物理像素又被称为设备像素，他是显示设备中一个最微小的物理部件。  设备独立像素(density-independent pixel) 设备独立像素也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，然后由相关系统转换为物理像素。英文缩写DIP。  CSS像素CSS像素是一个抽像">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/rUHGqNRDueQSbPy.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/FstCJOrPpv32IMw.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/08/31/XOutHYpLQTvsJdl.jpg">
 <meta property="article:published_time" content="2020-08-23T13:18:10.000Z">
-<meta property="article:modified_time" content="2020-08-31T14:41:23.700Z">
+<meta property="article:modified_time" content="2020-08-31T15:16:09.882Z">
 <meta property="article:author" content="liuxq">
 <meta property="article:tag" content="移动">
 <meta property="article:tag" content="h5">
 <meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/31/rUHGqNRDueQSbPy.jpg">
 
 
 
@@ -383,9 +387,31 @@
 </blockquote>
 <p>在JavaScript中，可以通过window.devicePixelRatio获取到当前设备的dpr。而在CSS中，可以通过-webkit-device-pixel-ratio，-webkit-min-device-pixel-ratio和 -webkit-max-device-pixel-ratio进行媒体查询。</p>
 </li>
+<li><p>响应式布局与弹性布局</p>
+<p>响应式布局不是弹性布局，弹性布局强调等比缩放，100%还原；响应式布局强调不同屏幕要有不同的显示，比如媒体查询。</p>
+<p>一般PC上的响应式布局会采用媒体查询、百分比的方式实现，flex也是一种最常见的解决方案，但是这些方案对于移动设备来说，都还不够。</p>
+<p>响应式布局是一个更宽泛的概念，而弹性布局可以认为是响应式布局是在移动端的一个具体实现思路。</p>
+</li>
 </ol>
 <h4 id="二、-弹性布局的单位"><a href="#二、-弹性布局的单位" class="headerlink" title="二、 弹性布局的单位"></a>二、 弹性布局的单位</h4><ol>
-<li>em</li>
+<li><p>em</p>
+<p>MDN的定义：</p>
+<blockquote>
+<p>em作为font-size的单位时，其代表父元素的字体大小，em作为其他属性单位时，代表自身字体大小</p>
+</blockquote>
+<p>举一个例子：</p>
+<p><img src="https://i.loli.net/2020/08/31/rUHGqNRDueQSbPy.jpg" alt="em"></p>
+<p>在这个例子中，各元素字体大小和行高分别为：<br><img src="https://i.loli.net/2020/08/31/FstCJOrPpv32IMw.jpg" alt="D4548DD3E9BA4E1C83FE8733906CB5D7.jpg"><br><img src="https://i.loli.net/2020/08/31/XOutHYpLQTvsJdl.jpg" alt="D4548DD3E9BA4E1C83FE8733906CB5D7.jpg"></p>
+<p>p2 line-height: 2  表示自身字体大小的两倍</p>
+<p>em就是为字体和行高而生的，有些时候子元素字体就应该相对于父元素，元素行高就应该相对于字体大小，但是用作响应式布局时，复杂的计算让人诟病。</p>
+</li>
+<li><p>rem</p>
+<p>MDN的定义：</p>
+<blockquote>
+<p>rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小</p>
+</blockquote>
+<p>与em比较，rem是相对根元素而不是父元素，这样做弹性布局时不会牵一发而动全身。rem的优点在于统一的参考系。</p>
+</li>
 </ol>
 
       
