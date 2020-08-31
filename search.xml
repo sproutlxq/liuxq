@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSS经典面试题-四种方式实现两列布局</title>
+    <url>/2020/05/13/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<p>   典型的两列布局就是下图这个样子。<br>   外层父容器是<i>.container</i>，左侧有固定宽度的<i>nav</i>，右侧的<i>section</i>自适应宽度。</p>
+<p>   常见的面试题还有在这个基础上增加header、footer。footer固定在页面底部，无论页面怎样滚动，保持固定宽度和位置。<br>   本文用四种方式实现下图的两列布局，顺便可以复习一下CSS Layout的部分知识。</p>
+<p>   <img src="https://i.loli.net/2020/06/01/5fVHKr6DO79FIXk.png" alt="two-column.PNG"></p>
+<p>   这个例子的html结构和基本的样式如下，我在此基础上添加布局样式实现两列布局。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;test&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    &#x2F;* 基本样式 *&#x2F;</span><br><span class="line">    body &#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 100%;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div, nav, section, header, footer &#123;</span><br><span class="line">        box-sizing: border-box; </span><br><span class="line">        border: solid 1px #000000;</span><br><span class="line">    &#125;</span><br><span class="line">    header &#123;</span><br><span class="line">        background-color: brown;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 80px;</span><br><span class="line">    &#125;</span><br><span class="line">    footer &#123;</span><br><span class="line">        background-color: cornflowerblue;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 120px;</span><br><span class="line">    &#125;</span><br><span class="line">    .container &#123;</span><br><span class="line">        height: 500px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;   </span><br><span class="line">    nav &#123;</span><br><span class="line">        height: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">    section &#123;</span><br><span class="line">        height: 700px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;* 布局样式 *&#x2F;</span><br><span class="line">    &#x2F;* 添加在这里 *&#x2F;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;我是固定宽高的header，高度为80px&lt;&#x2F;header&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;nav&gt;这是左边的栏目，固定宽度200px&lt;&#x2F;nav&gt;</span><br><span class="line">        &lt;section&gt;这是右边的栏目，占据屏幕剩下的宽度&lt;&#x2F;section&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;footer&gt;我是固定在页面底部的footer，我的高度是120px&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure></code></pre><h4 id="第一种方式：利用absolute-postion实现"><a href="#第一种方式：利用absolute-postion实现" class="headerlink" title="第一种方式：利用absolute postion实现"></a>第一种方式：利用absolute postion实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0; </span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   这个实现涉及到了position的各个属性： relative、absolute、fixed，还有一个无处不在的ststic。</p>
+<p>   static 是默认值。任意 position: static; 的元素不会被特殊的定位。一个 static 元素表示它不会被“positioned”，一个 position 属性被设置为其他值的元素表示它会被“positioned”。</p>
+<p>   relative 表现的和 static 一样，除非你添加了一些额外的属性。在一个相对定位（position属性的值为relative）的元素上设置 top 、 right 、 bottom 和 left 属性会使其<strong>偏离其正常位置</strong>。其他的元素的位置则不会受该元素的影响发生位置改变来弥补它偏离后剩下的空隙。</p>
+<p>   一个固定定位（position属性的值为fixed）元素会<strong>相对于视窗来定位</strong>，这意味着即便页面滚动，它还是会停留在相同的位置。和 relative 一样， top 、 right 、 bottom 和 left 属性都可用。<br>   一个固定定位元素不会保留它原本在页面应有的空隙（脱离文档流）。</p>
+<p>   absolute 是最棘手的position值。 absolute 与 fixed 的表现类似，但是它不是相对于视窗而是<strong>相对于最近的“positioned”祖先元素</strong>。如果绝对定位（position属性的值为absolute）的元素没有“positioned”祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动。记住一个“positioned”元素是指 position 值不是 static 的元素。</p>
+<p>   看明白以上position属性的表现就能理解第一种解决方案。</p>
+<h4 id="第二种方式：利用float实现"><a href="#第二种方式：利用float实现" class="headerlink" title="第二种方式：利用float实现"></a>第二种方式：利用float实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;   </span><br><span class="line">nav &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   float 属性定义元素在哪个方向浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。<br>   float设计的初衷并不是用来布局的，其本意仅仅是实现图片文字环绕效果，即图片左浮动，文字环绕图片。</p>
+<p>   一个元素设置了float属性，会表现出如下特性：</p>
+<ol>
+<li>包裹性：一个浮动元素，如果子元素宽度足够小，则浮动元素的宽度就是该子元素的宽度；如果浮动元素的父元素有设置宽度，并且浮动元素的子元素宽度超出了父元素，则浮动元素的宽度最终表现为父元素的宽度。</li>
+</ol>
+<ol start="2">
+<li><p>块状格式化上下文：设定了float的元素，其display的最终值会表现为block或者table(除了inline-table)。<br>因此，设置了float的元素，下面的写法是多余的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.float &#123;</span><br><span class="line">    float: left:</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">.float &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    vertical-align: middle; &#x2F;* 不起作用 *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>破坏文档流：设置float的元素，会导致父元素高度塌陷。</p>
+<p>看一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;father&quot;&gt;</span><br><span class="line">   &lt;img src&#x3D;&quot;.&#x2F;card.jpg&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;float&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">    文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://image-static.segmentfault.com/301/078/3010780609-5b826252cec40_articlex" alt="float父元素高度塌陷"></p>
+<p>可以看到父元素<i>father</i>的高度为0。</p>
+<p>这里还有一个隐藏特性，为了让文字浮动上去后不会盖在图片上，盒模型元素不会与浮动元素互相遮盖，因此给文字设置margin的负值也没有用。</p>
+</li>
+</ol>
+<ol start="4">
+<li>没有margin合并</li>
+</ol>
+<p>   其实，就像前面说的，float本来不是用来实现布局的，如果一个页面比较复杂，用float常常会产生很多问题，因此不推荐用这个方法来实现两列布局 or 多列布局。</p>
+<h4 id="第三种方式：利用display：inline-block实现"><a href="#第三种方式：利用display：inline-block实现" class="headerlink" title="第三种方式：利用display：inline-block实现"></a>第三种方式：利用display：inline-block实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nav &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">section &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   display: inline-block这个属性很简单，改变了盒模型的默认显示方式。这种实现方式要注意的是应该添加vertical-align: top;属性，这样左右两列高度不一致时也能够对齐。</p>
+<p>   但是这个方法有一个要求： 右侧的内容必须足够多，能够填充剩余宽度。</p>
+<h4 id="第四种方式：利用flex实现"><a href="#第四种方式：利用flex实现" class="headerlink" title="第四种方式：利用flex实现"></a>第四种方式：利用flex实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    display: -webkit-flex;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">nav &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    -webkit-flex: 1;</span><br><span class="line">            flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   flex布局这里就不详细解释了，阮一峰老师的Flex教程写的很详细了，不过我用到的机会好少/(ㄒoㄒ)/~~太不熟练了</p>
+<p>   参考链接： <a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">http://zh.learnlayout.com/</a></p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+        <tag>Layout</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Pages + hexo Next 搭建个人博客</title>
     <url>/2020/05/07/Github-Page-hexo-Next-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、Github-Pages-和-hexo是什么"><a href="#一、Github-Pages-和-hexo是什么" class="headerlink" title="一、Github Pages 和 hexo是什么"></a>一、Github Pages 和 hexo是什么</h4><p>   Github Pages是github提供的托管个人博客的工具，不过只能存放静态页面。通过修改项目的setting就可以开启Github Pages服务。配置好以后，它会给你一个可以访问的域名，这样你就不用去买服务器和域名以及备案了。</p>
@@ -85,9 +135,9 @@
       </tags>
   </entry>
   <entry>
-    <title>《用Python进行数据分析》读书笔记</title>
-    <url>/2020/05/01/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>待填坑</p>
+    <title>《深入理解ES6》读书笔记</title>
+    <url>/2020/05/01/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>产假期间看的书们，我要仔细梳理一下。待填坑</p>
 ]]></content>
   </entry>
   <entry>
@@ -95,90 +145,6 @@
     <url>/2020/05/01/%E3%80%8ATensorFlow%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>待填坑</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>CSS经典面试题-四种方式实现两列布局</title>
-    <url>/2020/05/13/CSS%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E5%88%97%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<p>   典型的两列布局就是下图这个样子。<br>   外层父容器是<i>.container</i>，左侧有固定宽度的<i>nav</i>，右侧的<i>section</i>自适应宽度。</p>
-<p>   常见的面试题还有在这个基础上增加header、footer。footer固定在页面底部，无论页面怎样滚动，保持固定宽度和位置。<br>   本文用四种方式实现下图的两列布局，顺便可以复习一下CSS Layout的部分知识。</p>
-<p>   <img src="https://i.loli.net/2020/06/01/5fVHKr6DO79FIXk.png" alt="two-column.PNG"></p>
-<p>   这个例子的html结构和基本的样式如下，我在此基础上添加布局样式实现两列布局。</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;test&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    &#x2F;* 基本样式 *&#x2F;</span><br><span class="line">    body &#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 100%;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div, nav, section, header, footer &#123;</span><br><span class="line">        box-sizing: border-box; </span><br><span class="line">        border: solid 1px #000000;</span><br><span class="line">    &#125;</span><br><span class="line">    header &#123;</span><br><span class="line">        background-color: brown;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 80px;</span><br><span class="line">    &#125;</span><br><span class="line">    footer &#123;</span><br><span class="line">        background-color: cornflowerblue;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 120px;</span><br><span class="line">    &#125;</span><br><span class="line">    .container &#123;</span><br><span class="line">        height: 500px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;   </span><br><span class="line">    nav &#123;</span><br><span class="line">        height: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">    section &#123;</span><br><span class="line">        height: 700px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;* 布局样式 *&#x2F;</span><br><span class="line">    &#x2F;* 添加在这里 *&#x2F;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;我是固定宽高的header，高度为80px&lt;&#x2F;header&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">        &lt;nav&gt;这是左边的栏目，固定宽度200px&lt;&#x2F;nav&gt;</span><br><span class="line">        &lt;section&gt;这是右边的栏目，占据屏幕剩下的宽度&lt;&#x2F;section&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;footer&gt;我是固定在页面底部的footer，我的高度是120px&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure></code></pre><h4 id="第一种方式：利用absolute-postion实现"><a href="#第一种方式：利用absolute-postion实现" class="headerlink" title="第一种方式：利用absolute postion实现"></a>第一种方式：利用absolute postion实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nav &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0; </span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>   这个实现涉及到了position的各个属性： relative、absolute、fixed，还有一个无处不在的ststic。</p>
-<p>   static 是默认值。任意 position: static; 的元素不会被特殊的定位。一个 static 元素表示它不会被“positioned”，一个 position 属性被设置为其他值的元素表示它会被“positioned”。</p>
-<p>   relative 表现的和 static 一样，除非你添加了一些额外的属性。在一个相对定位（position属性的值为relative）的元素上设置 top 、 right 、 bottom 和 left 属性会使其<strong>偏离其正常位置</strong>。其他的元素的位置则不会受该元素的影响发生位置改变来弥补它偏离后剩下的空隙。</p>
-<p>   一个固定定位（position属性的值为fixed）元素会<strong>相对于视窗来定位</strong>，这意味着即便页面滚动，它还是会停留在相同的位置。和 relative 一样， top 、 right 、 bottom 和 left 属性都可用。<br>   一个固定定位元素不会保留它原本在页面应有的空隙（脱离文档流）。</p>
-<p>   absolute 是最棘手的position值。 absolute 与 fixed 的表现类似，但是它不是相对于视窗而是<strong>相对于最近的“positioned”祖先元素</strong>。如果绝对定位（position属性的值为absolute）的元素没有“positioned”祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动。记住一个“positioned”元素是指 position 值不是 static 的元素。</p>
-<p>   看明白以上position属性的表现就能理解第一种解决方案。</p>
-<h4 id="第二种方式：利用float实现"><a href="#第二种方式：利用float实现" class="headerlink" title="第二种方式：利用float实现"></a>第二种方式：利用float实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;   </span><br><span class="line">nav &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   float 属性定义元素在哪个方向浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。<br>   float设计的初衷并不是用来布局的，其本意仅仅是实现图片文字环绕效果，即图片左浮动，文字环绕图片。</p>
-<p>   一个元素设置了float属性，会表现出如下特性：</p>
-<ol>
-<li>包裹性：一个浮动元素，如果子元素宽度足够小，则浮动元素的宽度就是该子元素的宽度；如果浮动元素的父元素有设置宽度，并且浮动元素的子元素宽度超出了父元素，则浮动元素的宽度最终表现为父元素的宽度。</li>
-</ol>
-<ol start="2">
-<li><p>块状格式化上下文：设定了float的元素，其display的最终值会表现为block或者table(除了inline-table)。<br>因此，设置了float的元素，下面的写法是多余的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.float &#123;</span><br><span class="line">    float: left:</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">.float &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    vertical-align: middle; &#x2F;* 不起作用 *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>破坏文档流：设置float的元素，会导致父元素高度塌陷。</p>
-<p>看一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;father&quot;&gt;</span><br><span class="line">   &lt;img src&#x3D;&quot;.&#x2F;card.jpg&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;float&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">    文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://image-static.segmentfault.com/301/078/3010780609-5b826252cec40_articlex" alt="float父元素高度塌陷"></p>
-<p>可以看到父元素<i>father</i>的高度为0。</p>
-<p>这里还有一个隐藏特性，为了让文字浮动上去后不会盖在图片上，盒模型元素不会与浮动元素互相遮盖，因此给文字设置margin的负值也没有用。</p>
-</li>
-</ol>
-<ol start="4">
-<li>没有margin合并</li>
-</ol>
-<p>   其实，就像前面说的，float本来不是用来实现布局的，如果一个页面比较复杂，用float常常会产生很多问题，因此不推荐用这个方法来实现两列布局 or 多列布局。</p>
-<h4 id="第三种方式：利用display：inline-block实现"><a href="#第三种方式：利用display：inline-block实现" class="headerlink" title="第三种方式：利用display：inline-block实现"></a>第三种方式：利用display：inline-block实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nav &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">section &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>   display: inline-block这个属性很简单，改变了盒模型的默认显示方式。这种实现方式要注意的是应该添加vertical-align: top;属性，这样左右两列高度不一致时也能够对齐。</p>
-<p>   但是这个方法有一个要求： 右侧的内容必须足够多，能够填充剩余宽度。</p>
-<h4 id="第四种方式：利用flex实现"><a href="#第四种方式：利用flex实现" class="headerlink" title="第四种方式：利用flex实现"></a>第四种方式：利用flex实现</h4>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    display: -webkit-flex;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">nav &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">    -webkit-flex: 1;</span><br><span class="line">            flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>   flex布局这里就不详细解释了，阮一峰老师的Flex教程写的很详细了，不过我用到的机会好少/(ㄒoㄒ)/~~太不熟练了</p>
-<p>   参考链接： <a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">http://zh.learnlayout.com/</a></p>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-        <tag>Layout</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为什么建站</title>
-    <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
-    <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝九个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
-<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人深入交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
-<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下主动与人交流和分享的能力，而不仅仅是因为工作沟通以及朋友主动来找我。那么就从写博客开始吧！</p>
-<p>   另一个目的，是希望博客分享的方式，逼迫我把一些知识学得更透彻，事情做到更精细，然后多多总结，并把学过的内容沉淀下来（现在的工作与专业无关，学过的知识用不上，所以遗忘很严重，每年都要重学一遍，真的很浪费时间）。</p>
-<p>   这个站的文章可能会很杂，包括学习总结、读书笔记、观影报告、日记等等，所以不想按照分类来组织，搜索的话就依靠Tag。这样我可以在写作灵感乍现的时候没有分类负担的先写下来再说。</p>
-<p>   写作频率还是要对自己有些要求的，每个月至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
-]]></content>
-      <tags>
-        <tag>日记</tag>
-        <tag>第一篇</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《深入理解ES6》读书笔记</title>
-    <url>/2020/05/01/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>产假期间看的书们，我要仔细梳理一下。待填坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>动态高可配置表单探索</title>
-    <url>/2020/08/17/%E5%8A%A8%E6%80%81%E9%AB%98%E5%8F%AF%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%8E%A2%E7%B4%A2/</url>
-    <content><![CDATA[<p>   这个月抽空要给一个表单系统换皮肤，因为是老旧的系统，首先需要重构，把表现层逻辑层从内容里抽离出来。这个表单页面维护十几年，非常复杂，几千行，重构的过程眼睛快要看瞎。<br>   其实toB的很多业务系统粗看都是流程驱动表单，而表单又十分复杂。这个问题很普遍，我想趁机把这个问题深入研究一下。</p>
-<p>   复杂的表单主要表现在三多： 字段多、字段显示判断多、校验多。目标是有一套动态高可配置的解决方案。<br>   公司的老旧jsp页面改造起来太费劲了，我选择放弃/(ㄒoㄒ)/~~ 为了研究这个问题，我自己用react建了一个表单的场景。按照对问题逐渐深入的顺序，打算按照这个大纲来讲：</p>
-<h4 id="一、-场景"><a href="#一、-场景" class="headerlink" title="一、 场景"></a>一、 场景</h4><p>   去年有机会参加了一个项目，几乎对接了公司所有的业务开发组，从某一个业务流程介入，带着部分表单内容发起新的流程。在这个过程中有机会粗略了解了一下这些业务系统，从技术上说主要是 流程驱动 + 表单。流程大体都有流程引擎来控制，但是表单需要单独去开发，有些表单字段多、校验多、控制多，页面写起来很复杂。<br>   下面是一个react实现的表单示例</p>
-<h4 id="二、-采用json-scheme配置字段复杂的表单"><a href="#二、-采用json-scheme配置字段复杂的表单" class="headerlink" title="二、 采用json scheme配置字段复杂的表单"></a>二、 采用json scheme配置字段复杂的表单</h4><h4 id="三、-策略模式优化表单校验"><a href="#三、-策略模式优化表单校验" class="headerlink" title="三、 策略模式优化表单校验"></a>三、 策略模式优化表单校验</h4><h4 id="四、-前后台结合动态生成表单"><a href="#四、-前后台结合动态生成表单" class="headerlink" title="四、 前后台结合动态生成表单"></a>四、 前后台结合动态生成表单</h4><h4 id="五、-动态高可配置表单解决方案"><a href="#五、-动态高可配置表单解决方案" class="headerlink" title="五、 动态高可配置表单解决方案"></a>五、 动态高可配置表单解决方案</h4><p>   表单这个问题其实很复杂，这篇文章只能触及到皮毛，但是这个业务场景本身是值得持续研究下去的，未来还可能继续更新。</p>
-]]></content>
-      <tags>
-        <tag>表单</tag>
-        <tag>json scheme</tag>
-      </tags>
   </entry>
   <entry>
     <title>懒加载</title>
@@ -281,6 +247,40 @@
       </tags>
   </entry>
   <entry>
+    <title>《用Python进行数据分析》读书笔记</title>
+    <url>/2020/05/01/%E3%80%8A%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>待填坑</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>为什么建站</title>
+    <url>/2020/05/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BB%BA%E7%AB%99/</url>
+    <content><![CDATA[<p>   2019年我幸运的得到了一个天使宝宝，同时也跨入了我的30岁。有阵痛，但也感到了前所未有的圆满和幸福。<br>   在休产假期间，赶上了2020年的疫情，于是“幸运”的能够在家陪伴宝宝九个半月时间。空闲时沉迷B站，整个人都变得年轻了（国企真的催人老 &amp;&amp; 吐槽脸），然后产生了强烈的愿望，想要在30岁这一年做一些以前不会做的事。</p>
+<p>   我的兴趣很多：打单机游戏、电影、游泳、桌游、看小说、做家务、旅游、画画… 除了兴趣，也常常对其他没体验过的事情感到好奇。我一直感觉自己的生活非常丰富多彩，我沉迷于自己的世界，变得越来越懒得与别人深入交流（内心os: 反正你们也不会懂我的乐趣 &amp;&amp; 傲娇脸），习惯与所有人保持着稍稍远一些的距离。</p>
+<p>   但是30了，再不改变，也许我就变成了一个固执的老太太，然后就要以现在的面貌一直到老呢。我想试着锻炼下主动与人交流和分享的能力，而不仅仅是因为工作沟通以及朋友主动来找我。那么就从写博客开始吧！</p>
+<p>   另一个目的，是希望博客分享的方式，逼迫我把一些知识学得更透彻，事情做到更精细，然后多多总结，并把学过的内容沉淀下来（现在的工作与专业无关，学过的知识用不上，所以遗忘很严重，每年都要重学一遍，真的很浪费时间）。</p>
+<p>   这个站的文章可能会很杂，包括学习总结、读书笔记、观影报告、日记等等，所以不想按照分类来组织，搜索的话就依靠Tag。这样我可以在写作灵感乍现的时候没有分类负担的先写下来再说。</p>
+<p>   写作频率还是要对自己有些要求的，每个月至少要有一篇学习类的文章（但是不能用太简单的凑数），不然可能像以前一样，轰轰烈烈去购买了域名备了案，但是什么也不想写。</p>
+]]></content>
+      <tags>
+        <tag>日记</tag>
+        <tag>第一篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态高可配置表单探索</title>
+    <url>/2020/08/17/%E5%8A%A8%E6%80%81%E9%AB%98%E5%8F%AF%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%8E%A2%E7%B4%A2/</url>
+    <content><![CDATA[<p>   这个月抽空要给一个表单系统换皮肤，因为是老旧的系统，首先需要重构，把表现层逻辑层从内容里抽离出来。这个表单页面维护十几年，非常复杂，几千行，重构的过程眼睛快要看瞎。<br>   其实toB的很多业务系统粗看都是流程驱动表单，而表单又十分复杂。这个问题很普遍，我想趁机把这个问题深入研究一下。</p>
+<p>   复杂的表单主要表现在三多： 字段多、字段显示判断多、校验多。目标是有一套动态高可配置的解决方案。<br>   公司的老旧jsp页面改造起来太费劲了，我选择放弃/(ㄒoㄒ)/~~ 为了研究这个问题，我自己用react建了一个表单的场景。按照对问题逐渐深入的顺序，打算按照这个大纲来讲：</p>
+<h4 id="一、-场景"><a href="#一、-场景" class="headerlink" title="一、 场景"></a>一、 场景</h4><p>   去年有机会参加了一个项目，几乎对接了公司所有的业务开发组，从某一个业务流程介入，带着部分表单内容发起新的流程。在这个过程中有机会粗略了解了一下这些业务系统，从技术上说主要是 流程驱动 + 表单。流程大体都有流程引擎来控制，但是表单需要单独去开发，有些表单字段多、校验多、控制多，页面写起来很复杂。<br>   下面是一个react实现的表单示例</p>
+<h4 id="二、-采用json-scheme配置字段复杂的表单"><a href="#二、-采用json-scheme配置字段复杂的表单" class="headerlink" title="二、 采用json scheme配置字段复杂的表单"></a>二、 采用json scheme配置字段复杂的表单</h4><h4 id="三、-策略模式优化表单校验"><a href="#三、-策略模式优化表单校验" class="headerlink" title="三、 策略模式优化表单校验"></a>三、 策略模式优化表单校验</h4><h4 id="四、-前后台结合动态生成表单"><a href="#四、-前后台结合动态生成表单" class="headerlink" title="四、 前后台结合动态生成表单"></a>四、 前后台结合动态生成表单</h4><h4 id="五、-动态高可配置表单解决方案"><a href="#五、-动态高可配置表单解决方案" class="headerlink" title="五、 动态高可配置表单解决方案"></a>五、 动态高可配置表单解决方案</h4><p>   表单这个问题其实很复杂，这篇文章只能触及到皮毛，但是这个业务场景本身是值得持续研究下去的，未来还可能继续更新。</p>
+]]></content>
+      <tags>
+        <tag>表单</tag>
+        <tag>json scheme</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>暂停</title>
     <url>/2020/07/15/%E6%9A%82%E5%81%9C/</url>
     <content><![CDATA[<p>   最近开始准备考CFA。既然是金融从业者迟早要攀登的一座高山，我决定不拖着，就在下个生日来临前加油战胜它。</p>
@@ -290,6 +290,37 @@
 ]]></content>
       <tags>
         <tag>日记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动适配性学习总结</title>
+    <url>/2020/08/23/%E7%A7%BB%E5%8A%A8%E9%80%82%E9%85%8D%E6%80%A7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h4 id="一、-相关概念"><a href="#一、-相关概念" class="headerlink" title="一、 相关概念"></a>一、 相关概念</h4><ol>
+<li><p>物理像素(physical pixel)</p>
+<p>物理像素又被称为设备像素，他是显示设备中一个最微小的物理部件。</p>
+</li>
+<li><p>设备独立像素(density-independent pixel)</p>
+<p>设备独立像素也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，然后由相关系统转换为物理像素。英文缩写<strong>DIP</strong>。</p>
+</li>
+<li><p>CSS像素<br>CSS像素是一个抽像的单位，主要使用在浏览器上，用来精确度量Web页面上的内容。一般情况之下，CSS像素称为与设备无关的像素(device-independent pixel)，简称<strong>DIPs</strong>。</p>
+</li>
+<li><p>屏幕密度<br>屏幕密度是指一个设备表面上存在的像素数量，它通常以每英寸有多少像素来计算，英文缩写<strong>PPI</strong>。</p>
+</li>
+<li><p>设备像素比(device pixel ratio)<br>设备像素比简称为<strong>dpr</strong>，其定义了物理像素和设备独立像素的对应关系。它的值可以按下面的公式计算得到：</p>
+<blockquote>
+<p>设备像素比 ＝ 物理像素 / 设备独立像素</p>
+</blockquote>
+<p>在JavaScript中，可以通过window.devicePixelRatio获取到当前设备的dpr。而在CSS中，可以通过-webkit-device-pixel-ratio，-webkit-min-device-pixel-ratio和 -webkit-max-device-pixel-ratio进行媒体查询。</p>
+</li>
+</ol>
+<h4 id="二、-弹性布局的单位"><a href="#二、-弹性布局的单位" class="headerlink" title="二、 弹性布局的单位"></a>二、 弹性布局的单位</h4><ol>
+<li>em</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>移动</tag>
+        <tag>h5</tag>
+        <tag>css</tag>
       </tags>
   </entry>
 </search>
